@@ -5,7 +5,9 @@ using UnityEngine;
 public class PowerUP : MonoBehaviour {
 
     [SerializeField]
-    private float speed;
+    private float speed = 2f;
+    [SerializeField]
+    private string powerUpType;
 	// Use this for initialization
 	void Start () {
         
@@ -19,9 +21,13 @@ public class PowerUP : MonoBehaviour {
         {
             Player player = other.GetComponent<Player>();
 
-            if (player != null)
+            if (player != null && powerUpType == "Triple")
             {
-                player.TrippleShotPowerUpOn();
+                player.PowerUpOn(powerUpType);
+            }
+            else if(player != null && powerUpType == "Speed")
+            {
+                player.PowerUpOn(powerUpType);
             }
         }
 

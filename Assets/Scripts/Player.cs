@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     [SerializeField]
-    private float _speed;
+    private float _speed = 2f;
     [SerializeField]
     private float _fireRate = 0.25f;
 
@@ -20,7 +20,8 @@ public class Player : MonoBehaviour {
     private float _verticalInput;
 
     
-    public bool _isLaserUpgraded;
+    public bool _isTripleLaserPicked;
+    public bool _isSpeedPowerUpPicked;
 
     private Vector3 movementVector = new Vector3(1, 1, 0);
 	// Use this for initialization
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour {
     private void Shoot()
     {
        
-        if(_isLaserUpgraded)
+        if(_isTripleLaserPicked)
         {
             Instantiate(_trippleshotPrefab, transform.position, Quaternion.identity);
         }
@@ -53,16 +54,35 @@ public class Player : MonoBehaviour {
             
     }
 
-    public void TrippleShotPowerUpOn()
+    public void PowerUpOn(string powerType)
     {
-        _isLaserUpgraded = true;
-        StartCoroutine(ShutDownPowerUpOn());
+        if(powerType == "Triple")
+        {
+            _isTripleLaserPicked = true;
+            StartCoroutine(ShutDownTriplePowerUpOn());
+        }
+        else if(powerType == "Speed")
+        {
+            _isSpeedPowerUpPicked = true;
+            StartCoroutine(ShutDownSpeedUpOn());
+        }
+       
     }
 
-    public IEnumerator ShutDownPowerUpOn()
+    public IEnumerator ShutDownTriplePowerUpOn()
     {
         yield return new WaitForSeconds(10);
-        _isLaserUpgraded = false;
+        _isTripleLaserPicked = false;
+    }
+
+    public IEnumerator ShutDownSpeedUpOn()
+    {
+        _speed *= 2;
+
+        yield return new WaitForSeconds(10);
+
+        _speed /= 2;
+        _isSpeedPowerUpPicked = false;
     }
 
     private void Movemevt()

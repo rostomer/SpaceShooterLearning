@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151809460236246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5662507, y: -1.7572045, z: 0}
+  m_LocalPosition: {x: 0.01, y: -1.7572045, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.011338472, y: 0.011338592}
@@ -99,14 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5ee616667de9f428243049aebd1224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 2.5
   _fireRate: 0.25
   _canFire: 0
   _laserPrefab: {fileID: 1317631158866384, guid: 1e951ad2612303e4d90887fc27165a28,
     type: 2}
   _trippleshotPrefab: {fileID: 1698688506410546, guid: 99f33e35694e5344a94001cd74254cac,
     type: 2}
-  _isLaserUpgraded: 0
+  _isTripleLaserPicked: 0
+  _isSpeedPowerUpPicked: 0
 --- !u!212 &212018125570193900
 SpriteRenderer:
   m_ObjectHideFlags: 1
