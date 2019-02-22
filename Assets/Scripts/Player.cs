@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
         else if(powerType == "Speed")
         {
             _isSpeedPowerUpPicked = true;
-            StartCoroutine(ShutDownSpeedUpOn());
+            StartCoroutine(ShutDownSpeedUp());
         }
        
     }
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
         _isTripleLaserPicked = false;
     }
 
-    public IEnumerator ShutDownSpeedUpOn()
+    public IEnumerator ShutDownSpeedUp()
     {
         _speed *= 2;
 
