@@ -18,12 +18,17 @@ public class EnemyBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        xSpawnPos = Random.Range(leftSpawnBorder, rightSpawnBorder);
-        transform.position = new Vector3(xSpawnPos, topSpawnBorder, 0);
+        SetUpPosition();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
 	}
+
+    public void SetUpPosition()
+    {
+        xSpawnPos = Random.Range(leftSpawnBorder, rightSpawnBorder);
+        transform.position = new Vector3(xSpawnPos, topSpawnBorder, 0);
+    }
 }

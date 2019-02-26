@@ -12,8 +12,11 @@ public class DeathBorder : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
-            Instantiate(_enemyPrefabToResurrect, transform.position, Quaternion.identity);
+            EnemyBehavior enemy = other.gameObject.GetComponent<EnemyBehavior>();
+            enemy.SetUpPosition();
+           // Destroy(other.gameObject);
+           // Instantiate(_enemyPrefabToResurrect, transform.position, Quaternion.identity);
+      
         }
         else
         {

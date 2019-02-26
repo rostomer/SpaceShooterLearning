@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114253484336988016}
   - component: {fileID: 61682855754312780}
   - component: {fileID: 50777710388071516}
+  - component: {fileID: 114700170613780688}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,6 +109,17 @@ MonoBehaviour:
     type: 2}
   _isTripleLaserPicked: 0
   _isSpeedPowerUpPicked: 0
+--- !u!114 &114700170613780688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151809460236246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41eeb3f6255ac894a94b73e0dafa0b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212018125570193900
 SpriteRenderer:
   m_ObjectHideFlags: 1

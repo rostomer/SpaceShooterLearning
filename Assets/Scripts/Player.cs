@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     private float _horizontalInput;
     private float _verticalInput;
 
+    public static int lives = 3;
+
     
     public bool _isTripleLaserPicked;
     public bool _isSpeedPowerUpPicked;
@@ -115,5 +117,13 @@ public class Player : MonoBehaviour {
         }
     }
 
-    
+    public void TakeDamage()
+    {
+        lives--;
+
+        if(lives == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
