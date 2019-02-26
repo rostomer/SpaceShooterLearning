@@ -11,6 +11,7 @@ public class DamageControl : MonoBehaviour {
         {
             Debug.Log("Enemy Killed");
             Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
 
      if (other.tag == "Player" && gameObject.tag == "Enemy")
