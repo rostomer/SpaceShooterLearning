@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
     private float _horizontalInput;
     private float _verticalInput;
 
-    public static int lives = 3;
+    public int lives = 3;
 
     
     public bool _isTripleLaserPicked;
