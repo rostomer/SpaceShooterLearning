@@ -107,8 +107,9 @@ MonoBehaviour:
     type: 2}
   _trippleshotPrefab: {fileID: 1280376096242820, guid: 54734d718ea8bd54c828c5c24ebc9725,
     type: 2}
-  _isTripleLaserPicked: 0
-  _isSpeedPowerUpPicked: 0
+  _shieldPrefab: {fileID: 1910339723115532, guid: 3449871db0dc6834386c65181108943e,
+    type: 2}
+  lives: 3
 --- !u!114 &114700170613780688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41eeb3f6255ac894a94b73e0dafa0b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyDeathAnimation: {fileID: 1809809684526666, guid: 6ea0d6c773071c74f9af5ddbc5751dd5,
+    type: 2}
+  _playerDeathAnimation: {fileID: 1233635793952990, guid: b7e3ce4bef609f44ba6f3ee3698eb07e,
+    type: 2}
 --- !u!212 &212018125570193900
 SpriteRenderer:
   m_ObjectHideFlags: 1

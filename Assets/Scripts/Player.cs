@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
     private GameObject _laserPrefab;
     [SerializeField]
     private GameObject _trippleshotPrefab;
+    [SerializeField]
+    private GameObject _shieldPrefab;
 
     private float _horizontalInput;
     private float _verticalInput;
@@ -22,8 +24,11 @@ public class Player : MonoBehaviour {
     public int lives = 3;
 
     
-    public bool _isTripleLaserPicked;
-    public bool _isSpeedPowerUpPicked;
+    private bool _isTripleLaserPicked;
+    private bool _isSpeedPowerUpPicked;
+    private bool _isShieldPowerUpPicked;
+
+    private GameObject shield;
 
     private Vector3 movementVector = new Vector3(1, 1, 0);
 	// Use this for initialization
@@ -68,16 +73,21 @@ public class Player : MonoBehaviour {
             _isSpeedPowerUpPicked = true;
             StartCoroutine(ShutDownSpeedUp());
         }
+        else if(powerType == "Shield")
+        {
+            _isShieldPowerUpPicked = true;
+            StartCoroutine(ShutDownShield());
+        }
        
     }
 
-    public IEnumerator ShutDownTriplePowerUpOn()
+    private IEnumerator ShutDownTriplePowerUpOn()
     {
         yield return new WaitForSeconds(10);
         _isTripleLaserPicked = false;
     }
 
-    public IEnumerator ShutDownSpeedUp()
+    private IEnumerator ShutDownSpeedUp()
     {
         _speed *= 2;
 
@@ -86,6 +96,21 @@ public class Player : MonoBehaviour {
         _speed /= 2;
         _isSpeedPowerUpPicked = false;
     }
+
+    private IEnumerator ShutDownShield()
+    {
+        shield = Instantiate(_shieldPrefab, transform.position, Quaternion.identity);
+
+        shield.transform.parent = gameObject.transform;
+
+        yield return new WaitForSeconds(15);
+
+        Destroy(shield);
+        shield = null;
+
+        _isShieldPowerUpPicked = false;
+    }
+
 
     private void Movemevt()
     {
@@ -119,7 +144,16 @@ public class Player : MonoBehaviour {
 
     public void TakeDamage()
     {
-        lives--;
+        if (_isShieldPowerUpPicked)
+        {
+            _isShieldPowerUpPicked = false;
+            Destroy(shield);
+            shield = null;
+        }
+        else
+        {
+            lives--;
+        }
 
         if(lives == 0)
         {

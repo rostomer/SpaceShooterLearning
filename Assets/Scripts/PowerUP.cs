@@ -29,6 +29,10 @@ public class PowerUP : MonoBehaviour {
             {
                 player.PowerUpOn(powerUpType);
             }
+            else if(player != null && powerUpType == "Shield")
+            {
+                player.PowerUpOn(powerUpType);
+            }
         }
 
         Destroy(gameObject);
