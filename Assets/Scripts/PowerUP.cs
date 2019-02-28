@@ -33,9 +33,11 @@ public class PowerUP : MonoBehaviour {
             {
                 player.PowerUpOn(powerUpType);
             }
+
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        
     }
 
 	// Update is called once per frame
