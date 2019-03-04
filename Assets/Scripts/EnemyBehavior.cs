@@ -14,6 +14,9 @@ public class EnemyBehavior : MonoBehaviour {
     [SerializeField]
     private float topSpawnBorder;
 
+    [SerializeField]
+    public int _enemyScoreValue;
+
     private float xSpawnPos;
 
 	// Use this for initialization

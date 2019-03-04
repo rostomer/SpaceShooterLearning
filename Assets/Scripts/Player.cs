@@ -28,12 +28,24 @@ public class Player : MonoBehaviour {
     private bool _isSpeedPowerUpPicked;
     private bool _isShieldPowerUpPicked;
 
-    private GameObject shield;
+    private GameObject _shield;
+
+    private UI_Manager _uI_Manager;
+    private MenuManager _menuManager;
 
     private Vector3 movementVector = new Vector3(1, 1, 0);
 	// Use this for initialization
 	void Start () {
         Debug.Log(movementVector);
+
+        _uI_Manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
+        _menuManager = GameObject.Find("Canvas").GetComponent<MenuManager>();
+
+        if (_uI_Manager != null)
+        {
+            Debug.Log("Lives Updated");
+            _uI_Manager.UpdateLives(lives);
+        }
 	}
 	
 	// Update is called once per frame
@@ -99,14 +111,14 @@ public class Player : MonoBehaviour {
 
     private IEnumerator ShutDownShield()
     {
-        shield = Instantiate(_shieldPrefab, transform.position, Quaternion.identity);
+        _shield = Instantiate(_shieldPrefab, transform.position, Quaternion.identity);
 
-        shield.transform.parent = gameObject.transform;
+        _shield.transform.parent = gameObject.transform;
 
         yield return new WaitForSeconds(15);
 
-        Destroy(shield);
-        shield = null;
+        Destroy(_shield);
+        _shield = null;
 
         _isShieldPowerUpPicked = false;
     }
@@ -120,10 +132,10 @@ public class Player : MonoBehaviour {
         movementVector.x = _horizontalInput * 1;
         movementVector.y = _verticalInput * 1;
 
-        Debug.Log(movementVector.x);
+
 
         transform.Translate(movementVector * _speed * Time.deltaTime);
-        //   transform.Translate(movementVector * speed * horizontalInput * verticalInput * Time.deltaTime);
+       
         if (transform.position.y < -4f)
         {
             transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
@@ -147,16 +159,18 @@ public class Player : MonoBehaviour {
         if (_isShieldPowerUpPicked)
         {
             _isShieldPowerUpPicked = false;
-            Destroy(shield);
-            shield = null;
+            Destroy(_shield);
+            _shield = null;
         }
         else
         {
             lives--;
+            _uI_Manager.UpdateLives(lives);
         }
 
         if(lives == 0)
         {
+            _menuManager.ReactivateMenu();
             Destroy(gameObject);
         }
     }
