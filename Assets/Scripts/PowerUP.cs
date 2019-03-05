@@ -21,6 +21,8 @@ public class PowerUP : MonoBehaviour {
         {
             Player player = other.GetComponent<Player>();
 
+            GetComponent<AudioPlayer>().PowerUpSound();
+
             if (player != null && powerUpType == "Triple")
             {
                 player.PowerUpOn(powerUpType);

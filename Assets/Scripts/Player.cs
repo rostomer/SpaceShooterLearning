@@ -28,10 +28,15 @@ public class Player : MonoBehaviour {
     private bool _isSpeedPowerUpPicked;
     private bool _isShieldPowerUpPicked;
 
+    [SerializeField]
+    private GameObject[] engines;
+
     private GameObject _shield;
 
     private UI_Manager _uI_Manager;
     private MenuManager _menuManager;
+
+    private AudioSource _audioSource;
 
     private Vector3 movementVector = new Vector3(1, 1, 0);
 	// Use this for initialization
@@ -46,6 +51,8 @@ public class Player : MonoBehaviour {
             Debug.Log("Lives Updated");
             _uI_Manager.UpdateLives(lives);
         }
+
+        _audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +67,7 @@ public class Player : MonoBehaviour {
 
     private void Shoot()
     {
+        _audioSource.Play();
        
         if(_isTripleLaserPicked)
         {
@@ -165,6 +173,15 @@ public class Player : MonoBehaviour {
         else
         {
             lives--;
+
+            if(lives == 2 && !engines[0].activeSelf)
+            {
+                engines[0].SetActive(true);
+            }
+            else if(lives == 1 && !engines[1].activeSelf)
+            {
+                engines[1].SetActive(true);
+            }
             _uI_Manager.UpdateLives(lives);
         }
 

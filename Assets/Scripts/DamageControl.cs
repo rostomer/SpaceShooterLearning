@@ -21,6 +21,8 @@ public class DamageControl : MonoBehaviour {
 
             _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
 
+            _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
+
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
