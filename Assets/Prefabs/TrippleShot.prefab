@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4526840008211758}
+  - component: {fileID: 114710179429060296}
   m_Layer: 0
   m_Name: TrippleShot
   m_TagString: Untagged
@@ -330,6 +331,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &114710179429060296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280376096242820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcb6bf01240c654ea06ea28f864039e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114842147688658656
 MonoBehaviour:
   m_ObjectHideFlags: 1
