@@ -21,10 +21,12 @@ GameObject:
   - component: {fileID: 4812851564889616}
   - component: {fileID: 212018125570193900}
   - component: {fileID: 114253484336988016}
+  - component: {fileID: 114700170613780688}
+  - component: {fileID: 114596636302528898}
   - component: {fileID: 61682855754312780}
   - component: {fileID: 50777710388071516}
-  - component: {fileID: 114700170613780688}
   - component: {fileID: 82203491144167258}
+  - component: {fileID: 95435346468857438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -65,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1724602578769240
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +84,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4285313663079992
 Transform:
   m_ObjectHideFlags: 1
@@ -129,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151809460236246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9132118, y: 4.427265, z: 0}
+  m_LocalPosition: {x: -0.31602138, y: 1.3039126, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 4285313663079992}
@@ -296,6 +298,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95435346468857438
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151809460236246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 940ab787ae42351479b411c05ea009c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95538205628942992
 Animator:
   serializedVersion: 3
@@ -356,6 +376,17 @@ MonoBehaviour:
   engines:
   - {fileID: 1724602578769240}
   - {fileID: 1645054948239502}
+--- !u!114 &114596636302528898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151809460236246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095d6bb3053fb514890cff82be06e46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700170613780688
 MonoBehaviour:
   m_ObjectHideFlags: 1

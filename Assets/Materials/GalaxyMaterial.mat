@@ -55,31 +55,31 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Brightness: 35
+    - _Brightness: 14.55
     - _BumpScale: 1
     - _CLAMPOUT: 0
     - _Cutoff: 0.5
-    - _Darkmatter: 20
+    - _Darkmatter: 15.4
     - _DetailNormalMapScale: 1
-    - _Distfading: 86.9
+    - _Distfading: 83.6
     - _DstBlend: 0
-    - _Formuparam: 530
+    - _Formuparam: 1505.9
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Iterations: 7.3
+    - _Iterations: 17.9
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Saturation: 81.8
+    - _Saturation: 86.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StepSize: 161.4
-    - _Tile: 391.3
+    - _StepSize: 199.5
+    - _Tile: 351.37
     - _UVSec: 0
-    - _Volsteps: 29
+    - _Volsteps: 1
     - _ZWrite: 1
     - _Zoom: 800
     m_Colors:
