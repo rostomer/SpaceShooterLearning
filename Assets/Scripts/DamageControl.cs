@@ -15,21 +15,26 @@ public class DamageControl : MonoBehaviour {
     {
         if (other.tag == "Enemy" && this.gameObject.tag == "Laser")
         {
-            Debug.Log("Enemy Killed");
+            other.gameObject.GetComponent<EnemyBehavior>()._enemyHP--;
+            if (other.gameObject.GetComponent<EnemyBehavior>()._enemyHP == 0)
+            {
+                Debug.Log("Enemy Killed");
 
-            Instantiate(_enemyDeathAnimation, other.transform.position, Quaternion.identity);
+                Instantiate(_enemyDeathAnimation, other.transform.position, Quaternion.identity);
 
-            _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
+                _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
 
-            _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
+                _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
 
-            Destroy(other.gameObject);
+                Destroy(other.gameObject);
+            }
             Destroy(this.gameObject);
         }
 
      if (other.tag == "Player" && gameObject.tag == "Enemy")
      {
-        other.gameObject.GetComponent<Player>().TakeDamage();
+        other.gameObject.GetComponent<Player>().
+                TakeDamage(gameObject.GetComponent<EnemyBehavior>()._enemyHP);
 
             Destroy(gameObject);
             Instantiate(_enemyDeathAnimation, transform.position, Quaternion.identity);

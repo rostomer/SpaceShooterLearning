@@ -16,6 +16,8 @@ public class EnemyBehavior : MonoBehaviour {
 
     [SerializeField]
     public int _enemyScoreValue;
+    [SerializeField]
+    public int _enemyHP;
 
     private float xSpawnPos;
 

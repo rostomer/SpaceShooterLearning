@@ -12,10 +12,11 @@ public class UI_Manager : MonoBehaviour {
     [SerializeField]
     private Sprite[] _liveSprites;
 
+    //All unactive objects at the game start
     [SerializeField]
     private GameObject[] _unactiveObjects;
 
-    private bool _objectsAreActive = false;
+    public bool _objectsAreActive = false;
 
     public int CurrentScore { get; set; }
 
@@ -33,9 +34,6 @@ public class UI_Manager : MonoBehaviour {
         _scoreText.text = "Score: " + CurrentScore;
     }
 	// Use this for initialization
-	void Start () {
-      
-	}
 	
     public void ActivateMenu()
     {
@@ -47,11 +45,11 @@ public class UI_Manager : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
-        if (gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space) && !_objectsAreActive)
-        {
-            ActivateMenu();
-        }
+	//void Update () {
+ //       if (gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space) && !_objectsAreActive)
+ //       {
+ //           ActivateMenu();
+ //       }
 
-    }
+ //   }
 }

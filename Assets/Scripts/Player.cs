@@ -162,7 +162,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damageTaken)
     {
         if (_isShieldPowerUpPicked)
         {
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            lives--;
+            lives -= damageTaken;
 
             if(lives == 2 && !engines[0].activeSelf)
             {
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour {
             _uI_Manager.UpdateLives(lives);
         }
 
-        if(lives == 0)
+        if(lives <= 0)
         {
             _menuManager.ReactivateMenu();
             Destroy(gameObject);
