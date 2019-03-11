@@ -16,7 +16,8 @@ public class DamageControl : MonoBehaviour {
         if (other.tag == "Enemy" && this.gameObject.tag == "Laser")
         {
             other.gameObject.GetComponent<EnemyBehavior>()._enemyHP--;
-            if (other.gameObject.GetComponent<EnemyBehavior>()._enemyHP == 0)
+            other.gameObject.GetComponent<AudioSource>().Play();
+            if (other.gameObject.GetComponent<EnemyBehavior>()._enemyHP <= 0)
             {
                 Debug.Log("Enemy Killed");
 
@@ -31,13 +32,13 @@ public class DamageControl : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-     if (other.tag == "Player" && gameObject.tag == "Enemy")
+     if (other.tag == "Player" && (gameObject.tag == "Enemy" || gameObject.tag == "EnemyLaser"))
      {
         other.gameObject.GetComponent<Player>().
-                TakeDamage(gameObject.GetComponent<EnemyBehavior>()._enemyHP);
+                TakeDamage(1);
 
             Destroy(gameObject);
-            Instantiate(_enemyDeathAnimation, transform.position, Quaternion.identity);
+
 
             if(other.gameObject.GetComponent<Player>().lives < 1)
             {
@@ -47,6 +48,9 @@ public class DamageControl : MonoBehaviour {
                 return;
             }
 
+            if (gameObject.tag == "EnemyLaser") return;
+
+            Instantiate(_enemyDeathAnimation, transform.position, Quaternion.identity);
             _UI_Manager.UpdateScore(gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
         }
     }

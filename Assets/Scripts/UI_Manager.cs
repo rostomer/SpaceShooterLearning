@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +27,14 @@ public class UI_Manager : MonoBehaviour {
     public void UpdateLives(int lives)
     {
         Debug.Log("Player lives: " + lives);
+        try
+        {
             livesImage.sprite = _liveSprites[lives];
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e.ToString() + " was caught.");
+        }
     }
 
     public void UpdateScore(int scoreValueToAdd)

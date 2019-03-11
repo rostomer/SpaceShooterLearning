@@ -6,6 +6,8 @@ public class LaserBehavior : MonoBehaviour {
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private Vector3 _laserDirection;
 
     private bool isUpgraded;
 
@@ -16,7 +18,7 @@ public class LaserBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(_laserDirection * speed * Time.deltaTime);
 
         TryDestroyLaser();
 

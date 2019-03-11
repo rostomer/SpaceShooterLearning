@@ -12,14 +12,32 @@ public class SpawnManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] _powerUps;
 
-    private float _enemySpawnRate = 4;
-    private float _canSpawnPowerUp = 20f;
-    private float _PowerUpSpawnRate = 20f;
+    public float _enemySpawnRate
+    {
+        get;
+        set;
+    }
+    public float _PowerUpSpawnRate
+    {
+        get;
+        set;
+    }
+
+
+    private float _canSpawnPowerUp = 30f;
     private float _canSpawnEnemy = 3;
 
     private void OnEnable()
     {
         Instantiate(_PlayerPrefab, Vector3.zero, Quaternion.identity);
+    }
+
+    private void OnDisable()
+    {
+        _enemySpawnRate = 0f;
+        _PowerUpSpawnRate = 0f;
+        _canSpawnPowerUp = 30f;
+        _canSpawnEnemy = 3f;
     }
 
     void Update()
@@ -36,6 +54,8 @@ public class SpawnManager : MonoBehaviour {
             int choice = Random.Range(0, _powerUps.Length);
 
             Instantiate(_powerUps[choice], new Vector3(Random.Range(-7f, 7f), 9, 0), Quaternion.identity);
+
+            Debug.Log(_PowerUpSpawnRate);
 
             _canSpawnPowerUp = Time.time + _PowerUpSpawnRate;
             }       
