@@ -7,6 +7,8 @@ public class SpawnManager : MonoBehaviour {
     [SerializeField]
     private GameObject _EnemyPrefab;
     [SerializeField]
+    private GameObject _Enemy_big_Prefab;
+    [SerializeField]
     private GameObject _PlayerPrefab;
 
     [SerializeField]
@@ -34,8 +36,9 @@ public class SpawnManager : MonoBehaviour {
 
     private void OnDisable()
     {
-        _enemySpawnRate = 0f;
-        _PowerUpSpawnRate = 0f;
+        GameManager.instance.ChangeParametersByGameDifficulty(GameManager.instance._gameDifficulty);
+        //_enemySpawnRate = 0f;
+        //_PowerUpSpawnRate = 0f;
         _canSpawnPowerUp = 30f;
         _canSpawnEnemy = 3f;
     }
@@ -44,8 +47,12 @@ public class SpawnManager : MonoBehaviour {
     {
             if (Time.time > _canSpawnEnemy)
             {
-                Instantiate(_EnemyPrefab, transform.position, Quaternion.identity);
-
+                if(Random.Range(0,5) < 4)
+                    Instantiate(_EnemyPrefab, transform.position, Quaternion.identity);
+                else if(Random.Range(0,5) == 4)
+                {
+                Instantiate(_Enemy_big_Prefab, transform.position, Quaternion.identity);
+            }
                 _canSpawnEnemy = Time.time + _enemySpawnRate;
             }
 

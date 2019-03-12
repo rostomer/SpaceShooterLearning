@@ -18,7 +18,7 @@ public class DeathBorder : MonoBehaviour {
            // Instantiate(_enemyPrefabToResurrect, transform.position, Quaternion.identity);
       
         }
-        else
+        else 
         {
             Destroy(other);
         }

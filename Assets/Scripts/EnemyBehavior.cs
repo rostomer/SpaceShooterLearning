@@ -17,7 +17,9 @@ public class EnemyBehavior : MonoBehaviour {
     [SerializeField]
     private GameObject _laser;
 
+    [SerializeField]
     private float _laserSpawnRate = 4f;
+    [SerializeField]
     private float _shootDelay = 0f;
    // private float firstShootDelay = 3f;
 

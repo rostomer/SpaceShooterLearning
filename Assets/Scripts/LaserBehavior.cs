@@ -31,7 +31,7 @@ public class LaserBehavior : MonoBehaviour {
 
     private void TryDestroyLaser()
     {
-        if(transform.position.y > 7.3f)
+        if(transform.position.y > 7.3f || transform.position.y < -6f)
         {
             Destroy(gameObject);
         }

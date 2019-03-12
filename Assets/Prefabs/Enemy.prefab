@@ -294,11 +294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18383687cf095e2408503efb90c95e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemySpeed: 2
+  _enemySpeed: 1.5
   leftSpawnBorder: -7
   rightSpawnBorder: 7
   topSpawnBorder: 9
   _laser: {fileID: 1383501417868346, guid: 78063713d47f025439f53b71020f8787, type: 2}
+  _laserSpawnRate: 3
+  _shootDelay: 0
   _enemyScoreValue: 100
   _enemyHP: 3
 --- !u!114 &114803831395364954

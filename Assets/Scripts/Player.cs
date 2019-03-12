@@ -38,6 +38,8 @@ public class Player : MonoBehaviour {
 
     private AudioSource _audioSource;
 
+    public AudioClip playerGetShot;
+
     private Vector3 movementVector = new Vector3(1, 1, 0);
 	// Use this for initialization
 	void Start () {
@@ -67,7 +69,9 @@ public class Player : MonoBehaviour {
 
     private void Shoot()
     {
-        _audioSource.Play();
+       // _audioSource.Play();
+
+        AudioSource.PlayClipAtPoint(_audioSource.clip, Vector3.zero, 2f);
        
         if(_isTripleLaserPicked)
         {

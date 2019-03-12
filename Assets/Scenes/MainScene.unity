@@ -1004,6 +1004,18 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114729534884020622, guid: fd70fdef2a235d74d9423bdf0dfe1633,
+        type: 2}
+      propertyPath: _EnemyPrefab
+      value: 
+      objectReference: {fileID: 1071559343731062, guid: e03dbd28582811747ac96bf65d410eee,
+        type: 2}
+    - target: {fileID: 114729534884020622, guid: fd70fdef2a235d74d9423bdf0dfe1633,
+        type: 2}
+      propertyPath: _Enemy_big_Prefab
+      value: 
+      objectReference: {fileID: 1528283013196766, guid: 849bd9268d100e84ebe6d031e0c72ace,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd70fdef2a235d74d9423bdf0dfe1633, type: 2}
   m_IsPrefabAsset: 0

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     private UI_Manager _UI_Manager;
     [SerializeField]
     [Range(1,3)]
-    private int _gameDifficulty = 1;
+    public int _gameDifficulty = 1;
     [SerializeField]
     private SpawnManager _spawnManager;
     [SerializeField]
@@ -18,8 +18,17 @@ public class GameManager : MonoBehaviour {
     private float timePassedFromPreviousIncrease = 0f;
 
     private float difficaltyChanger = 0f;
+
+    public static GameManager instance;
     // Use this for initialization
     void Start () {
+        if(instance == null)
+        {
+            instance = this;
+        } else if(instance == this)
+        {
+            Destroy(gameObject);
+        }
        // ChangeParametersByGameDifficulty(_gameDifficulty);
 	}
 	
@@ -29,6 +38,10 @@ public class GameManager : MonoBehaviour {
         if(_spawnManager.gameObject.activeSelf)
         {
             ChangeParametersByGameDifficulty(_gameDifficulty);
+        }
+        else
+        {
+            difficaltyChanger = 0f;
         }
 	}
 
@@ -40,7 +53,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void ChangeParametersByGameDifficulty(int difficultyLevel)
+    public void ChangeParametersByGameDifficulty(int difficultyLevel)
     {
         
         if(difficultyLevel == 3)

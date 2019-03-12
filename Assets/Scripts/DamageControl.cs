@@ -36,6 +36,10 @@ public class DamageControl : MonoBehaviour {
      {
         other.gameObject.GetComponent<Player>().
                 TakeDamage(1);
+            other.gameObject.GetComponent<AudioPlayer>().PlayeyGetShot();
+            //other.gameObject.GetComponent<AudioSource>().clip
+            //    = other.gameObject.GetComponent<Player>().playerGetShot;
+                
 
             Destroy(gameObject);
 
