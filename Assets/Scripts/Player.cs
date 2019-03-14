@@ -191,6 +191,7 @@ public class Player : MonoBehaviour {
 
         if(lives <= 0)
         {
+            GameManager.instance.isGameActive = false;
             _menuManager.ReactivateMenu();
             Destroy(gameObject);
         }

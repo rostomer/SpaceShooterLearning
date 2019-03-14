@@ -16,6 +16,8 @@ public class EnemyBehavior : MonoBehaviour {
 
     [SerializeField]
     private GameObject _laser;
+    [SerializeField]
+    private GameObject _enemyDeathAnimation;
 
     [SerializeField]
     private float _laserSpawnRate = 4f;
@@ -35,6 +37,13 @@ public class EnemyBehavior : MonoBehaviour {
         SetUpPosition();
 	}
 	
+    void OnDestroy()
+    {
+        if(_enemyDeathAnimation != null && GameManager.instance.isGameActive)
+        Instantiate(_enemyDeathAnimation, transform.position, Quaternion.identity);
+    }
+
+
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);

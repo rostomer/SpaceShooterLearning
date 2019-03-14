@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
     private float difficaltyChanger = 0f;
 
     public static GameManager instance;
+    [HideInInspector]
+    public bool isGameActive;
     // Use this for initialization
     void Start () {
         if(instance == null)
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour {
         if (_UI_Manager.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space) && !_UI_Manager._objectsAreActive)
         {
             _UI_Manager.ActivateMenu();
+            isGameActive = true;
         }
     }
 

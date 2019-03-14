@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageControl : MonoBehaviour {
 
     [SerializeField]
-    private GameObject _enemyDeathAnimation;
+    private GameObject _enemyDeathAnimation = null;
     [SerializeField]
     private GameObject _playerDeathAnimation;
 
@@ -21,8 +21,6 @@ public class DamageControl : MonoBehaviour {
             {
                 Debug.Log("Enemy Killed");
 
-                Instantiate(_enemyDeathAnimation, other.transform.position, Quaternion.identity);
-
                 _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
 
                 _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
@@ -36,10 +34,7 @@ public class DamageControl : MonoBehaviour {
      {
         other.gameObject.GetComponent<Player>().
                 TakeDamage(1);
-            other.gameObject.GetComponent<AudioPlayer>().PlayeyGetShot();
-            //other.gameObject.GetComponent<AudioSource>().clip
-            //    = other.gameObject.GetComponent<Player>().playerGetShot;
-                
+            other.gameObject.GetComponent<AudioPlayer>().PlayeyGetShot();             
 
             Destroy(gameObject);
 
@@ -54,7 +49,6 @@ public class DamageControl : MonoBehaviour {
 
             if (gameObject.tag == "EnemyLaser") return;
 
-            Instantiate(_enemyDeathAnimation, transform.position, Quaternion.identity);
             _UI_Manager.UpdateScore(gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
         }
     }

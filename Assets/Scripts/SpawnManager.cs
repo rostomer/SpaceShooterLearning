@@ -29,9 +29,12 @@ public class SpawnManager : MonoBehaviour {
     private float _canSpawnPowerUp = 30f;
     private float _canSpawnEnemy = 3;
 
+    private float time;
+
     private void OnEnable()
     {
         Instantiate(_PlayerPrefab, Vector3.zero, Quaternion.identity);
+        GameManager.instance.ChangeParametersByGameDifficulty(GameManager.instance._gameDifficulty);
     }
 
     private void OnDisable()
@@ -45,7 +48,9 @@ public class SpawnManager : MonoBehaviour {
 
     void Update()
     {
-            if (Time.time > _canSpawnEnemy)
+        time = Time.timeSinceLevelLoad;
+
+            if (time > _canSpawnEnemy)
             {
                 if(Random.Range(0,5) < 4)
                     Instantiate(_EnemyPrefab, transform.position, Quaternion.identity);
@@ -53,10 +58,10 @@ public class SpawnManager : MonoBehaviour {
                 {
                 Instantiate(_Enemy_big_Prefab, transform.position, Quaternion.identity);
             }
-                _canSpawnEnemy = Time.time + _enemySpawnRate;
+                _canSpawnEnemy = time + _enemySpawnRate;
             }
 
-            if(Time.time > _canSpawnPowerUp)
+            if(time > _canSpawnPowerUp)
             {
             int choice = Random.Range(0, _powerUps.Length);
 
@@ -64,7 +69,7 @@ public class SpawnManager : MonoBehaviour {
 
             Debug.Log(_PowerUpSpawnRate);
 
-            _canSpawnPowerUp = Time.time + _PowerUpSpawnRate;
+            _canSpawnPowerUp = time + _PowerUpSpawnRate;
             }       
     }
 }
