@@ -373,6 +373,7 @@ MonoBehaviour:
     type: 2}
   _shieldPrefab: {fileID: 1910339723115532, guid: 3449871db0dc6834386c65181108943e,
     type: 2}
+  _gameEnder: {fileID: 1787465220905726, guid: 844bdbdcc63429540861f62705b7f028, type: 2}
   lives: 3
   engines:
   - {fileID: 1724602578769240}

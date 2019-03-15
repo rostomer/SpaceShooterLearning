@@ -13,43 +13,48 @@ public class DamageControl : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" && this.gameObject.tag == "Laser")
+        if (gameObject.tag == "Enemy" && other.tag == "Laser")
         {
-            other.gameObject.GetComponent<EnemyBehavior>()._enemyHP--;
-            other.gameObject.GetComponent<AudioSource>().Play();
-            if (other.gameObject.GetComponent<EnemyBehavior>()._enemyHP <= 0)
+
+            //This - Laser, other - Enemy
+            gameObject.GetComponent<EnemyBehavior>()._enemyHP--;
+            gameObject.GetComponent<AudioSource>().Play();
+            if (gameObject.GetComponent<EnemyBehavior>()._enemyHP <= 0)
             {
                 Debug.Log("Enemy Killed");
 
-                _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
+                _UI_Manager.UpdateScore(gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
 
-                _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
 
-                Destroy(other.gameObject);
+                Instantiate(_enemyDeathAnimation, gameObject.transform.position, Quaternion.identity);
+               // _enemyDeathAnimation.gameObject.GetComponent<AudioSource>().Play();
+
+                Destroy(gameObject);
             }
-            Destroy(this.gameObject);
+            Destroy(other.gameObject);
         }
 
-     if (other.tag == "Player" && (gameObject.tag == "Enemy" || gameObject.tag == "EnemyLaser"))
+     if (gameObject.tag == "Player" && (other.tag == "Enemy" || other.tag == "EnemyLaser"))
      {
-        other.gameObject.GetComponent<Player>().
+        gameObject.GetComponent<Player>().
                 TakeDamage(1);
-            other.gameObject.GetComponent<AudioPlayer>().PlayeyGetShot();             
+            gameObject.GetComponent<AudioPlayer>().PlayeyGetShot();             
 
-            Destroy(gameObject);
+            Destroy(other.gameObject);
 
 
-            if(other.gameObject.GetComponent<Player>().lives < 1)
+            if(gameObject.GetComponent<Player>().lives < 1)
             {
-                Instantiate(_playerDeathAnimation, other.transform.position, Quaternion.identity);
-                _UI_Manager.ActivateMenu();
-
+                Debug.Log("You are dead");
+                Instantiate(_playerDeathAnimation, gameObject.transform.position, Quaternion.identity);
+                Destroy(gameObject);
                 return;
             }
 
-            if (gameObject.tag == "EnemyLaser") return;
+            if (other.tag == "EnemyLaser") return;
 
-            _UI_Manager.UpdateScore(gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
+            Instantiate(_enemyDeathAnimation, other.gameObject.transform.position, Quaternion.identity);
+            _UI_Manager.UpdateScore(other.gameObject.GetComponent<EnemyBehavior>()._enemyScoreValue);
         }
     }
 

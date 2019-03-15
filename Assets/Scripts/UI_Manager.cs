@@ -42,23 +42,4 @@ public class UI_Manager : MonoBehaviour {
         CurrentScore += scoreValueToAdd;
         _scoreText.text = "Score: " + CurrentScore;
     }
-	// Use this for initialization
-	
-    public void ActivateMenu()
-    {
-            foreach (GameObject obj in _unactiveObjects)
-            {
-                obj.SetActive(_objectsAreActive);
-            }
-            _objectsAreActive = !_objectsAreActive;
-    }
-
-	// Update is called once per frame
-	//void Update () {
- //       if (gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space) && !_objectsAreActive)
- //       {
- //           ActivateMenu();
- //       }
-
- //   }
 }

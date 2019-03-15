@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private GameObject _shieldPrefab;
 
+    [SerializeField]
+    private GameObject _gameEnder;
+
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -186,14 +189,13 @@ public class Player : MonoBehaviour {
             {
                 engines[1].SetActive(true);
             }
-            _uI_Manager.UpdateLives(lives);
-        }
+            if(lives == 0)
+            {
+                Instantiate(_gameEnder, transform.position, Quaternion.identity);
+            }
 
-        if(lives <= 0)
-        {
-            GameManager.instance.isGameActive = false;
-            _menuManager.ReactivateMenu();
-            Destroy(gameObject);
+            _uI_Manager.UpdateLives(lives);
+
         }
     }
 }

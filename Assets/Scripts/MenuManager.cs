@@ -18,24 +18,15 @@ public class MenuManager : MonoBehaviour {
 	void Start () {
         _UI_Manager = GetComponent<UI_Manager>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        StartGame();
-	}
+
 
     public void StartGame()
     {
-        if (_menuImage.IsActive() && Input.GetKeyDown(KeyCode.Space))
-        {
             foreach (GameObject obj in _unactiveObjects)
             {
                 obj.SetActive(!_objectsAreActive);
             }
             _objectsAreActive = !_objectsAreActive;
-
-            _menuImage.gameObject.SetActive(!_menuImage.IsActive());
-        }
     }
 
     public void ReactivateMenu()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,10 +15,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject EnemyPrefab;
 
-    private float difficaltyIncreaseRate = 15f;
+    private float difficultyIncreaseRate = 15f;
     private float timePassedFromPreviousIncrease = 0f;
 
-    private float difficaltyChanger = 0f;
+    private float difficultyChanger = 0f;
 
     public static GameManager instance;
     [HideInInspector]
@@ -31,29 +32,30 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-       // ChangeParametersByGameDifficulty(_gameDifficulty);
-	}
+
+        _gameDifficulty = GameSettingsManager.instance.difficultyLevel;
+        StartGame();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        StartGame();
+
         if(_spawnManager.gameObject.activeSelf)
         {
             ChangeParametersByGameDifficulty(_gameDifficulty);
         }
         else
         {
-            difficaltyChanger = 0f;
+            difficultyChanger = 0f;
         }
 	}
 
     private void StartGame()
     {
-        if (_UI_Manager.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space) && !_UI_Manager._objectsAreActive)
-        {
-            _UI_Manager.ActivateMenu();
+        //Костыль, вырезать к чёрту отсюда и удалить тот класс.
+        GameObject.Find("Canvas").GetComponent<MenuManager>().StartGame();
             isGameActive = true;
-        }
+       
     }
 
     public void ChangeParametersByGameDifficulty(int difficultyLevel)
@@ -61,17 +63,16 @@ public class GameManager : MonoBehaviour {
         
         if(difficultyLevel == 3)
         {
-            difficaltyIncreaseRate = 10f;
+            difficultyIncreaseRate = 10f;
             if(Time.time > timePassedFromPreviousIncrease)
             {
-                 _spawnManager._enemySpawnRate = 1.5f - difficaltyChanger;
-                //_spawnManager._canSpawnPowerUp = 40f;
-                _spawnManager._PowerUpSpawnRate = 40f + difficaltyChanger * 9;
+                 _spawnManager._enemySpawnRate = 1.5f - difficultyChanger;
+                _spawnManager._PowerUpSpawnRate = 40f + difficultyChanger * 9;
 
-                timePassedFromPreviousIncrease = Time.time + difficaltyIncreaseRate;
+                timePassedFromPreviousIncrease = Time.time + difficultyIncreaseRate;
 
-                if (difficaltyChanger <= 1.3f)
-                    difficaltyChanger += 0.05f;
+                if (difficultyChanger <= 1.3f)
+                    difficultyChanger += 0.05f;
             }
 
 
@@ -79,17 +80,16 @@ public class GameManager : MonoBehaviour {
         }
         else if(difficultyLevel == 2)
         {
-            difficaltyIncreaseRate = 15f;
+            difficultyIncreaseRate = 15f;
             if (Time.time > timePassedFromPreviousIncrease)
             {
-                _spawnManager._enemySpawnRate = 2f - difficaltyChanger;
-                //_spawnManager._canSpawnPowerUp = 40f;
-                _spawnManager._PowerUpSpawnRate = 3f + difficaltyChanger * 4;
+                _spawnManager._enemySpawnRate = 2f - difficultyChanger;
+                _spawnManager._PowerUpSpawnRate = 30f + difficultyChanger * 4;
 
-                timePassedFromPreviousIncrease = Time.time + difficaltyIncreaseRate;
+                timePassedFromPreviousIncrease = Time.time + difficultyIncreaseRate;
 
-                if (difficaltyChanger <= 1.1f)
-                    difficaltyChanger += 0.03f;
+                if (difficultyChanger <= 1.1f)
+                    difficultyChanger += 0.03f;
             }
 
 
@@ -97,21 +97,25 @@ public class GameManager : MonoBehaviour {
         }
         else if (difficultyLevel == 1)
         {
-            difficaltyIncreaseRate = 20f;
+            difficultyIncreaseRate = 20f;
             if (Time.time > timePassedFromPreviousIncrease)
             {
-                _spawnManager._enemySpawnRate = 2.2f - difficaltyChanger;
-                //_spawnManager._canSpawnPowerUp = 40f;
-                _spawnManager._PowerUpSpawnRate = 15f + difficaltyChanger * 5;
+                _spawnManager._enemySpawnRate = 2.2f - difficultyChanger;
+                _spawnManager._PowerUpSpawnRate = 15f + difficultyChanger * 5;
 
-                timePassedFromPreviousIncrease = Time.time + difficaltyIncreaseRate;
+                timePassedFromPreviousIncrease = Time.time + difficultyIncreaseRate;
 
-                if (difficaltyChanger <= 1.1f)
-                    difficaltyChanger += 0.02f;
+                if (difficultyChanger <= 1.1f)
+                    difficultyChanger += 0.02f;
             }
 
 
             EnemyPrefab.GetComponent<EnemyBehavior>()._enemyHP = 1;
         }
+    }
+
+    public void EndOfTheGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

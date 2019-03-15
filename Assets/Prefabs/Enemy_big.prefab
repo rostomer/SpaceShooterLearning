@@ -299,8 +299,6 @@ MonoBehaviour:
   rightSpawnBorder: 7
   topSpawnBorder: 9
   _laser: {fileID: 1383501417868346, guid: 78063713d47f025439f53b71020f8787, type: 2}
-  _enemyDeathAnimation: {fileID: 1919961704110062, guid: 951eb4c82e55f4d48b177eef9af75ca8,
-    type: 2}
   _laserSpawnRate: 2
   _shootDelay: 0
   _enemyScoreValue: 200

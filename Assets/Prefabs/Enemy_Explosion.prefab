@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809809684526666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.84, y: -0.9272657, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -168,6 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1651458bdecfb4180402e8cb0ba371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalShotAudioClip: {fileID: 8300000, guid: 8c719cb7b0e4d274887d2efedd842f1b,
+    type: 3}
+  playerGotShotAudioClip: {fileID: 8300000, guid: 1c5ff16e654ecf4488b7dc69e255b636,
+    type: 3}
 --- !u!114 &114503190393070016
 MonoBehaviour:
   m_ObjectHideFlags: 1
